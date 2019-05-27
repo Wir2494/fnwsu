@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Assortiment from '@/components/Assortiment'
 import OverOns from '@/components/OverOns'
 import Contact from '@/components/Contact'
+import Signin from '@/components/admin/Signin'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Signin
     },
     {
       path: '/assortiment',
