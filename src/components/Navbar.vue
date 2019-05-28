@@ -10,6 +10,7 @@
                     <router-link to="/assortiment">Assortiment</router-link>
                     <router-link to="/over-ons">Over Ons</router-link>
                     <router-link to="/contact">Contact</router-link>
+                    <button v-if="isLoggedIn" v-on:click="logout">Logout</button>
                 </nav>
             </div>
         </div>
@@ -18,11 +19,31 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import image from '../assets/firgos5.png'
 export default {
+    name: 'navbar',
     data() {
         return {
-            image: image
+            image: image,
+            isLoggedIn: false,
+            currentUser: false
+        }
+    },
+    created() {
+        if(firebase.auth().currentUser) {
+            this.isLoggedIn = true;
+            this.currentUser = firebase.auth().currentUser.email;
+        }
+    },
+    methods: {
+        logout() {
+            firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                this.$router.go({path: this.$router.path});
+            });
         }
     }
 
@@ -30,6 +51,16 @@ export default {
 </script>
 
 <style scoped>
+button{
+    background: #EF4937;
+    border-radius: 0.5rem;
+    border: 1px solid #EF4937;
+    color: #ffffff;
+    padding: 0.5rem 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
     a.router-link-active{
         border-bottom: 0.2rem solid #F8A88F;
     }
