@@ -6,6 +6,11 @@ import OverOns from '@/components/OverOns'
 import Contact from '@/components/Contact'
 import Signin from '@/components/admin/Signin'
 import Backoffice from '@/components/admin/Backoffice'
+import Homeadmin from '@/components/admin/Homeadmin'
+import Overonsadmin from '@/components/admin/Overonsadmin'
+import Contactadmin from '@/components/admin/Contactadmin'
+import Products from '@/components/admin/Products'
+import AddProduct from '@/components/admin/AddProduct'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -31,7 +36,23 @@ let router = new Router({
       component: Backoffice,
       meta: {
         requiresAuth: true
-      }
+      },
+      children: [{
+        path: 'produkten',
+        component: Products
+      }, {
+        path: 'produkt-toevoegen',
+        component: AddProduct
+      }, {
+        path: 'home',
+        component: Homeadmin
+      }, {
+        path: 'over-ons',
+        component: Overonsadmin
+      }, {
+        path: 'contact',
+        component: Contactadmin
+      }]
     },
     {
       path: '/assortiment',
