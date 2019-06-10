@@ -9,8 +9,10 @@ import Backoffice from '@/components/admin/Backoffice'
 import Homeadmin from '@/components/admin/Homeadmin'
 import Overonsadmin from '@/components/admin/Overonsadmin'
 import Contactadmin from '@/components/admin/Contactadmin'
+import ViewProduct from '@/components/admin/ViewProduct'
 import Products from '@/components/admin/Products'
 import AddProduct from '@/components/admin/AddProduct'
+import EditProduct from '@/components/admin/EditProduct'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -44,6 +46,10 @@ let router = new Router({
         path: 'produkt-toevoegen',
         component: AddProduct
       }, {
+        path: ':product_id',
+        name: 'view-product',
+        component: ViewProduct
+      },{
         path: 'home',
         component: Homeadmin
       }, {
@@ -53,6 +59,11 @@ let router = new Router({
         path: 'contact',
         component: Contactadmin
       }]
+    },
+    {
+      path: '/fsbo/product/bewerk-produkt/:product_id',
+      name: 'edit-product',
+      component: EditProduct
     },
     {
       path: '/assortiment',

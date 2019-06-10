@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Alle Produkten</h3>
+        <h3>Alle Produkten / ({{products.length + 1}})</h3>
         <ul>
             <li v-for="product in products" v-bind:key="product.id">
                 <div class="product-wrapper">
@@ -13,8 +13,7 @@
                         <p>{{product.category}}</p>
                     </div>
                     <div class="product-edits">
-                        <router-link to="/fsbo/bekijk-produkt">Bekijk</router-link>
-                        <button>Delete</button>
+                        <router-link v-bind:to="{name:'view-product', params:{product_id: product.product_id}}">Bekijk</router-link>
                     </div>
                 </div>
             </li>
@@ -58,14 +57,13 @@ export default {
     }
     ul{
         list-style: none;
-        /* background: #FFFFFF; */
         padding: 3rem;
         border-radius: 0.5rem;
         font-size: 1.1rem;
     }
     .product-wrapper{
         display: grid;
-        grid-template-columns: 0.5fr 2fr 1fr;
+        grid-template-columns: 0.7fr 2fr 1fr;
         align-items: center;
         margin-bottom: 1rem;
         background-color: #FFFFFF;
@@ -84,13 +82,5 @@ export default {
         border: 1px solid #EF4937;
         color: #EF4937;
         border-radius: 0.5rem;
-    }
-    .product-edits > button{
-        padding: 1rem 1.1rem;
-        border: 0;
-        border-radius: 6px;
-        background-color: #EF4937;
-        color:  #FFFFFF;
-        margin-right: 0.5rem;
     }
 </style>
