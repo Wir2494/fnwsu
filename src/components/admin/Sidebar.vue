@@ -1,11 +1,12 @@
 <template>
     <div class="sidebar">
-        <h2>Admin Controls</h2>            
+        <h2>Admin Controls</h2>
+        <h4>Produkten</h4>            
         <router-link class="margin-top" to="/fsbo/produkten">Alle Produkten</router-link>
         <router-link to="/fsbo/produkt-toevoegen">Voeg Produkt toe</router-link>
-        <router-link to="/fsbo/home">Bewerk Home</router-link>
-        <router-link to="/fsbo/over-ons">Bewerk Over ons</router-link>
-        <router-link to="/fsbo/contact">Bewerk Contact</router-link>       
+        <router-link to="/fsbo/admin/home-admin">Bewerk Home</router-link>
+        <router-link to="/fsbo/admin/over-ons-admin">Bewerk Over ons</router-link>
+        <router-link to="/fsbo/admin/contact-admin">Bewerk Contact</router-link>       
     </div>
 </template>
 <script>

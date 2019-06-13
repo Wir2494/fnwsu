@@ -49,21 +49,36 @@ let router = new Router({
         path: ':product_id',
         name: 'view-product',
         component: ViewProduct
-      },{
-        path: 'home',
-        component: Homeadmin
-      }, {
-        path: 'over-ons',
-        component: Overonsadmin
-      }, {
-        path: 'contact',
-        component: Contactadmin
       }]
     },
     {
       path: '/fsbo/product/bewerk-produkt/:product_id',
       name: 'edit-product',
-      component: EditProduct
+      component: EditProduct,
+      meta: {
+        requiresAuth: true
+      }
+    },{
+      path: '/fsbo/admin/home-admin',
+      name: 'admin-home',
+      component: Homeadmin,
+      meta: {
+        requiresAuth: true
+      }
+    },{
+      path: '/fsbo/admin/over-ons-admin',
+      name: 'over-ons-admin',
+      component: Overonsadmin,
+      meta: {
+        requiresAuth: true
+      }
+    },{
+      path: '/fsbo/admin/contact-admin',
+      name: 'contact-admin',
+      component: Contactadmin,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/assortiment',
@@ -80,8 +95,11 @@ let router = new Router({
       name: 'Contact',
       component: Contact
     }
-  ]
-});
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
+})
 
 // Navigation guards
 
@@ -96,10 +114,10 @@ router.beforeEach((to, from, next) => {
         query: {
           redirect: to.fullPath
         }
-      });
+      })
     }else {
       // Proceed to route
-      next();
+      next()
     }
   } else if(to.matched.some(record => record.meta.requiresGuest)) {
     // Check if loggedIn
@@ -110,15 +128,15 @@ router.beforeEach((to, from, next) => {
         query: {
           redirect: to.fullPath
         }
-      });
+      })
     }else {
       // Proceed to route
-      next();
+      next()
     }
   } else {
     // Proceed to route
-    next();
+    next()
   }
-});
-export default router;
+})
+export default router
 

@@ -6,7 +6,7 @@
                 <h3>Produkt Bewerken</h3>
                 <div class="form-row">
                     <label>ID</label>
-                    <input type="text" v-model="product_id" placeholder="ID.." required>
+                    <input type="text" v-model="product_id" placeholder="ID.." required disabled>
                 </div>
                 <div class="form-row">
                     <label>Naam</label>
