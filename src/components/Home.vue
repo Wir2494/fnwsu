@@ -170,7 +170,7 @@ button{
 }
 .grid-brand{
     display: grid;
-    grid-template-rows: 1fr 1 fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
     max-height: 25rem;
