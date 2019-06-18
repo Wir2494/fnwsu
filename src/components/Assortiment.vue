@@ -22,8 +22,10 @@
             <div class="grid-product-wrapper">
                 <ul>
                     <li v-for="product in visibleProducts" v-bind:key="product.id">
-                        <div><img :src="product.imageUrl" alt=""></div>
-                        <router-link to="/assortiment">{{product.name}}</router-link>
+                        <router-link v-bind:to="{name:'assortiment-product', params:{product_id: product.product_id}}"> 
+                            <div><img :src="product.imageUrl" alt=""></div>
+                            <router-link to="/assortiment">{{product.name}}</router-link>
+                        </router-link>
                     </li>
                 </ul>
                 <Pagination 

@@ -4,30 +4,30 @@
     <div class="wrapper"></div>
     <div class="polygon-2"></div>
     <div class="contact-box height-box-1 box-style">
-        <p>Wilt u in contact komen met ons dan zijn wij bereikbaar voor u vanaf<br> maandag tot en met vrijdag van 7uur - 16uur<br>en op de zaterdag van 7uur tot 13uur.</p>
+        <p>{{openingstijden}}</p>
     </div>
     <div class="contact-box height-box-2 box-style">
-        <p>Heeft u vragen over onze diensten, onze assortiment of wilt u<br>ons bereiken om enig ander reden?</p>
+        <p>{{nummercta}}</p>
     </div>
     <div class="contact-box height-box-3 box-style">
         <div class="grid-view">
             <img :src="call" alt="Call Firgos Suriname">
-            <p>481567</p>
-            <p>486400</p>
-            <p>480406</p>
-            <p>480459</p>
+            <p>{{contactnummer1}}</p>
+            <p>{{contactnummer2}}</p>
+            <p>{{contactnummer3}}</p>
+            <p>{{contactnummer4}}</p>
         </div>
     </div>
     <div class="adres-container height-box-4">
         <div class="adres-wrapper">
             <div>
                 <p>Adres <span><img :src="location" alt="location icon Firgos Suriname"></span></p>
-                <p>Industrie weg zuid 16</p>
-                <p>Paramaribo</p>
-                <p>Suriname</p>
-                <p>Zuid-Amerika</p>
+                <p>{{straatennummer}}</p>
+                <p>{{distrikt}}</p>
+                <p>{{land}}</p>
+                <p>{{continent}}</p>
             </div>
-            <img class="box-style" :src="adres" alt="Firgos Suriname adres">
+            <img class="box-style" :src="routefoto" alt="Firgos Suriname adres">
         </div>
     </div>
     <div class="contact-box height-box-5 box-style">
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { fb, db } from './firebaseinit'
 import call from '../assets/telephone.svg';
 import adres from '../assets/adres.jpg';
 import location from '../assets/location.svg';
@@ -52,8 +53,61 @@ export default {
     data() {
         return {
             call: call,
-            adres: adres,
-            location: location
+            location: location,
+            straatennummer: null,
+            openingstijden: null,
+            nummercta: null,
+            land: null,
+            distrikt: null,
+            continent: null,
+            contactnummer1: null,
+            contactnummer2: null,
+            contactnummer3: null,
+            contactnummer4: null,
+            routefoto: null,
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        db.collection('contact').get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                next(vm => {
+                    vm.straatennummer = doc.data().straatennummer
+                    vm.openingstijden = doc.data().openingstijden
+                    vm.nummercta = doc.data().nummercta
+                    vm.land = doc.data().land
+                    vm.distrikt = doc.data().distrikt
+                    vm.continent = doc.data().continent
+                    vm.contactnummer1 = doc.data().contactnummer1
+                    vm.contactnummer2 = doc.data().contactnummer2
+                    vm.contactnummer3 = doc.data().contactnummer3
+                    vm.contactnummer4 = doc.data().contactnummer4
+                    vm.routefoto = doc.data().routefoto
+                })
+            })
+        })
+    },
+    watch: {
+        '$route': 'fetchContactContent'
+    },
+    methods: {
+        fetchContactContent () {
+            db.collection('contact').get()
+            .then(querySnapshot => {
+                querySnapshot.forEach( doc=> {
+                    this.straatennummer = doc.data().straatennummer
+                    this.openingstijden = doc.data().openingstijden
+                    this.nummercta = doc.data().nummercta
+                    this.land = doc.data().land
+                    this.distrikt = doc.data().distrikt
+                    this.continent = doc.data().continent
+                    this.contactnummer1 = doc.data().contactnummer1
+                    this.contactnummer2 = doc.data().contactnummer2
+                    this.contactnummer3 = doc.data().contactnummer3
+                    this.contactnummer4 = doc.data().contactnummer4
+                    this.routefoto = doc.data().routefoto
+                })
+            })
         }
     }
     

@@ -11,20 +11,18 @@
     <div class="wrapper"></div>
     <div class="polygon-2"></div>
     <div class="about-container box-style">
-        <p class="title"><b>firgos suriname nv</b></p>
-        <p>firgos suriname bestaat sinds 1965. de toenmalige activiteiten waren in papier en grafische goederen. geleidelijkerwijs werd de overstap naar consumenten goederen en persoonlijke verzorgingsprodukten gemaakt.</p><br>
-        <p>in 1996 werd de volledige overstap gemaakt naar import en distributie van allerhande food en non-food produkten. sinds toen specialiseert firgos suriname nv zich niet alleen in lokale maar ook in internationale produkten.</p><br>
-        <p>als importeur en distributeur van welbekende merken zoals libresse, heroi en pascual zijn wij een niet te vergeten deel van de samenleving.</p>
+        <p class="title"><b>{{bedrijfsnaam}}</b></p>
+        <p>{{bedrijfsprofiel}}</p>
     </div>
     <div class="company-values-container">
         <div class="company-values">
             <div class="missie box-style">
                 <p class="title">Missie</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum et ex debitis quaerat temporibus consectetur, laborum odio corrupti eaque praesentium cum iusto mollitia iure sunt beatae fugit fugiat consequatur officia!</p>
+                <p>{{missie}}</p>
             </div>
             <div class="visie box-style">
                 <p class="title">Visie</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, quasi ratione. Distinctio officia, repellat iure expedita omnis fuga? Excepturi, eos consectetur aut tenetur impedit dignissimos ex dolor enim assumenda pariatur.</p>
+                <p>{{visie}}</p>
             </div>
         </div>
     </div>
@@ -42,6 +40,7 @@
 </template>
 
 <script>
+import { fb, db } from './firebaseinit'
 import ship from '../assets/cargo-ship.svg'
 import crane from '../assets/crane.svg'
 import truck from '../assets/delivery-truck.svg'
@@ -52,7 +51,40 @@ export default {
             ship: ship,
             crane: crane,
             truck: truck,
-            shop: shop
+            shop: shop,
+            bedrijfsnaam: null,
+            bedrijfsprofiel: null,
+            missie: null,
+            visie: null
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        db.collection('about').get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                next(vm => {
+                    vm.bedrijfsnaam = doc.data().bedrijfsnaam
+                    vm.bedrijfsprofiel = doc.data().bedrijfsprofiel
+                    vm.missie = doc.data().missie
+                    vm.visie = doc.data().visie
+                })
+            })
+        })
+    },
+    watch: {
+        '$route': 'fetchAboutContent'
+    },
+    methods: {
+        fetchAboutContent () {
+            db.collection('about').get()
+            .then(querySnapshot => {
+                querySnapshot.forEach( doc=> {
+                    this.bedrijfsnaam = doc.data().bedrijfsnaam
+                    this.bedrijfsprofiel = doc.data().bedrijfsprofiel
+                    this.missie = doc.data().missie
+                    this.visie = doc.data().visie
+                })
+            })
         }
     }
 }

@@ -4,38 +4,38 @@
         <div class="wrapper">
             <section class="welcome-text">
                 <div>
-                    <h1>Import & Distributie</h1>
-                    <p>Met Kwaliteit en Duurzaamheid op het oog</p>
+                    <h1>{{slogan}}</h1>
+                    <p>{{ondertitel}}</p>
                     <button @click="$router.push('assortiment')" class="cta-products">Bekijk Ons Assortiment!</button>
                     <button @click="$router.push('contact')" class="cta-contact">Contact Ons!</button>
                 </div>
             </section>
             <section class="top-brands">
-                <img class="image brand-1" :src="image1" alt="YPE">
-                <img class="image brand-2" :src="image2" alt="JOYCE">
-                <img class="image brand-3" :src="image3" alt="LIBRESSE">
+                <div class="brand-1"><img :src="fototopmerk1" alt=""></div>
+                <div class="brand-2"><img :src="fototopmerk2" alt=""></div>
+                <div class="brand-3"><img :src="fototopmerk3" alt=""></div>
             </section>
         </div>
     </div>
     <div class="wrapper wrapper-small">
         <div class="about">
             <div>
-                <p>Firgos Suriname bestaat sinds<br>1965, maar is een toonaangevende<br>importeur en distributeur sinds<br>het jaar 1996</p>
+                <p>{{overonsintro}}</p>
             </div>
             <button @click="$router.push('contact')" class="cta-contact">Lees Meer Over Ons</button>
         </div>
-        <div><img class="image image-xl" :src="image4" alt="Firgos Suriname vooraanzicht"></div>
+        <div><img class="image image-xl" :src="fotooveronsintro" alt="Firgos Suriname vooraanzicht"></div>
     </div>
     <div class="polygon-2">
         <div class="outer-grid">
             <div class="grid-brand">
-                <div class="grid-image"><img class="" :src="imagegrid1" alt="Libresse-UltraThingLongRapidryx10"> </div>
-                <div class="grid-image"><img class="" :src="imagegrid2" alt="Libresse-UltraThinRegularCottonlikex10"> </div>
-                <div class="grid-image"><img class="" :src="imagegrid3" alt="Pascual-Yogurts"> </div>
-                <div class="grid-image"><img class="" :src="imagegrid4" alt="Mavaleiro-Fondant"> </div>
+                <div class="grid-image"><img class="" :src="assortimentfoto1" alt=""> </div>
+                <div class="grid-image"><img class="" :src="assortimentfoto2" alt=""> </div>
+                <div class="grid-image"><img class="" :src="assortimentfoto3" alt=""> </div>
+                <div class="grid-image"><img class="" :src="assortimentfoto4" alt=""> </div>
             </div>
             <div class="assortiment">
-                <p>een ruim assortiment dat niet<br>alleen bestaat uit lokale maar<br>ook internationale producten!</p>
+                <p>{{assortimentintro}}</p>
                 <button @click="$router.push('assortiment')" class="cta-products">Bekijk Ons Assortiment!</button>
             </div>
         </div>
@@ -44,26 +44,69 @@
 </template>
 
 <script>
-import ypeimage from '../assets/ype.jpg' 
-import libresseimage from '../assets/UltraThinRegularRapidryx10.jpg' 
-import joyceimage from '../assets/joyce.jpg' 
-import firgosfront from '../assets/front-firgos.jpg' 
-import libressegrid1 from '../assets/UltraThingLongRapidryx10.jpg' 
-import libressegrid2 from '../assets/UltraThinRegularCottonlikex10.jpg' 
-import pascualgrid from '../assets/Pascual-Yogurts(1).png' 
-import mavaleirogrid from '../assets/Fondant.jpg' 
+import { fb, db } from './firebaseinit'
+
 export default {
     data (){
         return {
-            image1: ypeimage,
-            image2: libresseimage,
-            image3: joyceimage,
-            image4: firgosfront,
-            imagegrid1: libressegrid1,
-            imagegrid2: libressegrid2,
-            imagegrid3: pascualgrid, 
-            imagegrid4: mavaleirogrid
+            slogan: null,
+            ondertitel: null,
+            overonsintro: null,
+            assortimentintro: null,
+            fototopmerk1: null,
+            fototopmerk2: null,
+            fototopmerk3: null,
+            fotooveronsintro: null,
+            assortimentfoto1: null,
+            assortimentfoto2: null,
+            assortimentfoto3: null,
+            assortimentfoto4: null
         }
+    },
+    beforeRouteEnter (to, from, next) {
+        db.collection('home').get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                next(vm => {
+                    vm.slogan = doc.data().slogan
+                    vm.ondertitel = doc.data().ondertitel
+                    vm.overonsintro = doc.data().overonsintro
+                    vm.assortimentintro = doc.data().assortimentintro
+                    vm.fototopmerk1 = doc.data().fototopmerk1
+                    vm.fototopmerk2 = doc.data().fototopmerk2
+                    vm.fototopmerk3 = doc.data().fototopmerk3
+                    vm.fotooveronsintro = doc.data().fotooveronsintro
+                    vm.assortimentfoto1 = doc.data().assortimentfoto1
+                    vm.assortimentfoto2 = doc.data().assortimentfoto2
+                    vm.assortimentfoto3 = doc.data().assortimentfoto3
+                    vm.assortimentfoto4 = doc.data().assortimentfoto4
+                })
+            })
+        })
+    },
+    watch: {
+        '$route': 'fetchHomeContent'
+    },
+    methods: {
+        fetchHomeContent () {
+            db.collection('home').get()
+            .then(querySnapshot => {
+                querySnapshot.forEach( doc=> {
+                    this.slogan = doc.data().slogan
+                    this.ondertitel = doc.data().ondertitel
+                    this.overonsintro = doc.data().overonsintro
+                    this.assortimentintro = doc.data().assortimentintro
+                    this.fototopmerk1 = doc.data().fototopmerk1
+                    this.fototopmerk2 = doc.data().fototopmerk2
+                    this.fototopmerk3 = doc.data().fototopmerk3
+                    this.fotooveronsintro = doc.data().fotooveronsintro
+                    this.assortimentfoto1 = doc.data().assortimentfoto1
+                    this.assortimentfoto2 = doc.data().assortimentfoto2
+                    this.assortimentfoto3 = doc.data().assortimentfoto3
+                    this.assortimentfoto4 = doc.data().assortimentfoto4
+                })
+            })
+        },
     }
 }
 </script>
@@ -116,12 +159,19 @@ button{
     position: relative;
     margin-top: 4rem;
 }
-.image{
+.top-brands > div{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1.5rem;
-    max-height: 13rem;
+    height: 13rem;
     width: 14rem;
     position: absolute;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+.top-brands > div > img{
+    height: 13rem;
+    width: 14rem;
+    border-radius: 1.5rem;
 }
 .brand-1{
     top: 20%;

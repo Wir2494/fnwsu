@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Assortiment from '@/components/Assortiment'
+import ViewAssortimentProduct from '@/components/ViewAssortimentProduct'
 import OverOns from '@/components/OverOns'
 import Contact from '@/components/Contact'
 import Signin from '@/components/admin/Signin'
@@ -84,6 +85,11 @@ let router = new Router({
       path: '/assortiment',
       name: 'Assortiment',
       component: Assortiment
+    },
+    {
+      path: '/assortiment/:product_id',
+      name: 'assortiment-product',
+      component: ViewAssortimentProduct
     },
     {
       path: '/over-ons',
