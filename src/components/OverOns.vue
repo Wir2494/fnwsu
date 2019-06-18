@@ -176,4 +176,48 @@ img{
 .polygon-2{
     height: 90vh;
 }
+@media (min-width: 1370px){
+    .wrapper{
+        height: 40vh;
+    }
+    .polygon-2{
+        height: 70vh;
+    }
+    .about-container{
+        top: 50%;
+    }
+    .company-values-container{
+        top: 115%;
+    }
+    .move{
+        top: 170%;
+    }
+}
+@media (max-width: 1000px){
+    .move{
+        top: 220%;
+    }
+    .polygon-2{
+        height: 140vh;
+    }
+    img{
+        height: 5rem;
+        width: 5rem;
+    }
+    .company-values{
+    grid-auto-flow: row;
+    }
+    .company-values-container{
+        top: 155%;
+    }
+    .move{
+        top: 290%;
+    }
+    .grid{
+        grid-template-columns: 1fr;
+    }
+    .polygon-2{
+        height: 200vh;
+    }
+}
 </style>

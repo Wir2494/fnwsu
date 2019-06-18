@@ -1,7 +1,11 @@
 <template>
 <div>
-    <div class="polygon-1">
-        <div class="wrapper">
+    <div class="polygon-1"></div>
+    <div class="wrapper"></div>
+    <!-- <div class="wrapper wrapper-small"></div> -->
+    <div class="polygon-2"></div>
+    <div class="container">
+        <div class="landingpage">
             <section class="welcome-text">
                 <div>
                     <h1>{{slogan}}</h1>
@@ -10,23 +14,21 @@
                     <button @click="$router.push('contact')" class="cta-contact">Contact Ons!</button>
                 </div>
             </section>
-            <section class="top-brands">
-                <div class="brand-1"><img :src="fototopmerk1" alt=""></div>
-                <div class="brand-2"><img :src="fototopmerk2" alt=""></div>
-                <div class="brand-3"><img :src="fototopmerk3" alt=""></div>
-            </section>
+            <!-- <section class="top-brands">
+                <div class="brand-1"><img :src="fototopmerk1" alt="Firgos Suriname Top Merken"></div>
+                <div class="brand-2"><img :src="fototopmerk2" alt="Firgos Suriname Top Merken"></div>
+                <div class="brand-3"><img :src="fototopmerk3" alt="Firgos Suriname Top Merken"></div>
+            </section> -->
         </div>
-    </div>
-    <div class="wrapper wrapper-small">
-        <div class="about">
-            <div>
-                <p>{{overonsintro}}</p>
+        <div class="home-about">
+            <div class="about">
+                <div>
+                    <p>{{overonsintro}}</p>
+                </div>
+                <button @click="$router.push('contact')" class="cta-contact">Lees Meer Over Ons</button>
             </div>
-            <button @click="$router.push('contact')" class="cta-contact">Lees Meer Over Ons</button>
+            <div class="about-image-wrapper"><img class="image image-xl" :src="fotooveronsintro" alt="Firgos Suriname vooraanzicht"></div>
         </div>
-        <div><img class="image image-xl" :src="fotooveronsintro" alt="Firgos Suriname vooraanzicht"></div>
-    </div>
-    <div class="polygon-2">
         <div class="outer-grid">
             <div class="grid-brand">
                 <div class="grid-image"><img class="" :src="assortimentfoto1" alt=""> </div>
@@ -40,6 +42,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 </template>
 
@@ -49,6 +52,9 @@ import { fb, db } from './firebaseinit'
 export default {
     data (){
         return {
+            window: {
+                width: 0
+            },
             slogan: null,
             ondertitel: null,
             overonsintro: null,
@@ -112,17 +118,35 @@ export default {
 </script>
 
 <style scoped>
-.wrapper-small{
-    height: 40vh;
+.container{
+    position: absolute;
+    top: 0;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-rows: 0.9fr 0.5fr 0.9fr;
+
+}
+.landingpage{
+    display: grid;
+    grid-auto-flow: column;
+}
+.home-about{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+.about-image-wrapper{
+    display: grid;
+    align-items: center;
 }
 .welcome-text{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-}
-.welcome-text > div{
-    margin: 0 auto;
 }
 .welcome-text > div > h1{
     color:#EF4937;
@@ -156,17 +180,18 @@ button{
     color: #EF4937;
 }
 .top-brands{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
     position: relative;
-    margin-top: 4rem;
 }
 .top-brands > div{
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1.5rem;
     height: 13rem;
-    width: 14rem;
+    width: 14rem; 
     position: absolute;
-    
 }
 .top-brands > div > img{
     height: 13rem;
@@ -174,17 +199,15 @@ button{
     border-radius: 1.5rem;
 }
 .brand-1{
-    top: 20%;
-    right: 10%;
+    bottom: 28%;
+    left: -50%;
 }
 .brand-2{
-    top: 50%;
-    right: 61%;
-    z-index: 10;
+    bottom: 36%;
 }
 .brand-3{
-    top: 35%;
-    right: 35%;
+    left: 50%;
+    bottom: 46%;
 }
 .about{
     display: grid;
@@ -208,6 +231,7 @@ button{
     width: 23.4rem;
     top: 25%;
     left: 28.5%;
+    border-radius: 0.5rem;
 
 }
 .outer-grid{
@@ -216,22 +240,22 @@ button{
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: end;
-    
 }
 .grid-brand{
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
     align-items: stretch;
     max-height: 25rem;
     width: 24rem;
-    background-color:#FFFFFF;
     border-radius: 1.5rem;
 }
 .grid-image > img{
     object-fit: cover;
     height: 100%;
     width: 100%;
+    border-radius: 0.5rem;
 }
 .assortiment{
     display: flex;
@@ -245,5 +269,112 @@ button{
     text-transform: uppercase;
     color: #F8A88F;
     
+}
+
+@media (min-width: 1370px){
+    .top-brands > div{
+        height: 20rem;
+        width: 20rem; 
+    }
+    .top-brands > div > img{
+        height: 20rem;
+        width: 20rem;
+        border-radius: 1.5rem;
+    }
+    .brand-1{
+        bottom: 0;
+        left: -50%;
+    }
+    .brand-2{
+        bottom: 16%;
+    }
+    .brand-3{
+        left: 50%;
+        bottom: 36%;
+    }
+    .container{
+    grid-template-rows: 1fr 1fr 1fr;
+    }
+    .wrapper{
+        height: 40vh;
+    }
+    .polygon-2{
+        height: 135vh;
+    }
+    .outer-grid{
+    align-items: center;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .top-brands > div{
+        height: 12rem;
+        width: 12rem; 
+    }
+    .top-brands > div > img{
+        height: 12rem;
+        width: 12rem;
+        border-radius: 1.5rem;
+    }
+    .brand-1{
+        bottom: 25%;
+        left: -50%;
+    }
+    .brand-2{
+        bottom: 40%;
+    }
+    .brand-3{
+        left: 50%;
+        bottom: 60%;
+    }
+  
+}
+@media (max-width: 1000px){
+    .landingpage{
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-rows: 0.8fr;
+    }
+    .home-about{
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+    .about{
+        display: grid;
+        font-size: 1.1rem;
+        align-content: start;
+        justify-items: start;
+        padding-right:0rem;
+        padding-top: 0;
+    }
+    .image-xl{
+        position: static;
+        max-height: 15rem;
+        width: 15rem;
+        border-radius: 0.5rem;
+    }
+    .outer-grid{
+        margin-top: 0rem;
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+    .grid-brand{
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.5rem;
+        max-height: 20rem;
+        width: 20rem;
+    }
+    .assortiment > p{
+        margin-top: 2rem;
+        font-size: 1rem;
+    }
+    .assortiment > button {
+        font-size: 0.8rem;
+    }
+    .polygon-2{
+        height: 200vh;
+    }
 }
 </style>

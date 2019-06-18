@@ -214,4 +214,36 @@ input[type=submit]{
     text-transform: uppercase;
     font-weight: 550;
 }
+@media (min-width: 1370px){
+    .height-box-1{
+    top: 35%;
+    }
+    .height-box-2{
+        top: 65%;
+    }
+    .height-box-3{
+        top: 105%;
+    }
+    .height-box-4{
+        top: 140%;
+    }
+    .height-box-5{
+        top: 215%;
+    }
+    .wrapper{
+        height: 40vh;
+    }
+    .polygon-2{
+        height: 130vh;
+    }
+}
+@media (max-width: 1000px){
+    .adres-wrapper{
+    grid-template-columns: 1fr;
+    }
+    .adres-wrapper > img{
+        height: 20rem;
+        width: 20rem;
+    }
+}
 </style>

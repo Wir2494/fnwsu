@@ -123,4 +123,19 @@ img{
     color:  #FFFFFF;
     margin-right: 0.5rem;
 }
+@media (max-width: 1000px){
+    .product-view{
+        grid-template-columns: 1fr;
+    }
+    img{
+    width: 15rem;
+    height: 15rem;
+    }
+    .product-view-wrapper{
+    top: 80%;  
+    }
+    .polygon-1{
+        height: 150vh;
+    }
+}
 </style>

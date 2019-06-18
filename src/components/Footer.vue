@@ -89,6 +89,9 @@ export default {
 }
 ul{
     list-style-type: none;
+    margin-right: 41px;
+    margin-top: 25px;
+
 }
 .underline{
     display: block;
@@ -102,5 +105,11 @@ ul{
     font-weight: 500;
     font-size: 0.8rem;
     text-align: center; 
+}
+@media (max-width: 1000px){
+    .footer-wrapper{
+    grid-auto-flow: row;
+    justify-items: center;
+    }
 }
 </style>

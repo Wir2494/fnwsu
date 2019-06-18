@@ -170,9 +170,12 @@ export default {
 .wrapper{
     height: 25vh;
 }
+.polygon-2{
+    height: 120vh;
+}
 img{
     width: 100%;
-    height: 15rem;
+    height: 10rem;
     object-fit: contain;
     border: 1px solid #beb6b6;
     border-radius: 0.5rem;
@@ -230,7 +233,7 @@ img{
 }
 .grid-product-wrapper > ul{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-gap: 1rem;
     justify-items: center;
     padding: 2rem;
@@ -247,5 +250,57 @@ a{
     font-weight: 600;
     margin-top: 0.5rem;
     text-decoration: none;
+}
+@media (min-width: 1370px){
+    img{
+        height: 15rem;
+    }
+    .grid-product-wrapper > ul{
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));    
+    }
+    .polygon-2{
+        height: 80vh;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .polygon-2{
+      height: 140vh;
+  }
+}
+@media (max-width: 1090px) {
+  img{
+        height: 10rem;
+    }
+    .grid-product-wrapper > ul{
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));    
+    }
+    .polygon-2{
+        height: 80vh;
+    }
+    .grid-product-wrapper{
+        font-size: 0.7rem;
+    }
+    .content-wrapper{
+    top: 15%;
+    }
+    .wrapper{
+        height: 100vh;
+    }
+    .polygon-2{
+        height: 130vh;
+    }
+}
+@media (max-width: 840px) {
+    .wrapper{
+        height: 140vh;
+    }
+}
+@media (max-width: 1090px) {
+    .wrapper{
+        height: 300vh;
+    }
+    .polygon-2{
+        height: 400vh;
+    }
 }
 </style>
