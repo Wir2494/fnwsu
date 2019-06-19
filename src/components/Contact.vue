@@ -46,7 +46,6 @@
 <script>
 import { fb, db } from './firebaseinit'
 import call from '../assets/telephone.svg';
-import adres from '../assets/adres.jpg';
 import location from '../assets/location.svg';
 
 export default {
@@ -244,6 +243,37 @@ input[type=submit]{
     .adres-wrapper > img{
         height: 20rem;
         width: 20rem;
+    }
+}
+@media (max-width: 400px){
+    .contact-box{
+        width: 86vw;
+        left: 50%;
+        padding: 2rem 1rem;
+    }
+    .height-box-1{
+        top: 35%;
+    }
+    .height-box-2{
+        top: 77%;
+    }
+    .height-box-3{
+        top: 111%;
+    }
+    .height-box-4{
+        top: 150%;
+    }
+    .adres-container{
+        padding: 0;
+    }
+    .height-box-5{
+        top: 260%;
+    }
+    .polygon-2{
+        height: 213vh;
+    }
+    .grid-view > img{
+        height: 2rem;
     }
 }
 </style>

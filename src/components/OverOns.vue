@@ -220,4 +220,24 @@ img{
         height: 200vh;
     }
 }
+@media (max-width: 400px){
+    .about-container {
+        width: 90vw;
+        padding: 4rem 1rem;
+    }
+    .adres-container{
+        width: 55vw;
+        padding: 1rem 2rem;
+    }
+    .company-values-container{
+        width: 55vh;
+        top: 196%;
+    }
+    .move{
+        top: 368%;
+    }
+    .polygon-2{
+        height: 340vh;
+    }
+}
 </style>

@@ -138,4 +138,9 @@ img{
         height: 150vh;
     }
 }
+@media (max-width: 440px){
+    .product-view-wrapper{
+        width: 90%;
+    }
+}
 </style>

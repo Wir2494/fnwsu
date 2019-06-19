@@ -14,11 +14,11 @@
                     <button @click="$router.push('contact')" class="cta-contact">Contact Ons!</button>
                 </div>
             </section>
-            <!-- <section class="top-brands">
+            <section class="top-brands">
                 <div class="brand-1"><img :src="fototopmerk1" alt="Firgos Suriname Top Merken"></div>
                 <div class="brand-2"><img :src="fototopmerk2" alt="Firgos Suriname Top Merken"></div>
                 <div class="brand-3"><img :src="fototopmerk3" alt="Firgos Suriname Top Merken"></div>
-            </section> -->
+            </section>
         </div>
         <div class="home-about">
             <div class="about">
@@ -335,6 +335,9 @@ button{
         grid-auto-flow: row;
         grid-template-rows: 0.8fr;
     }
+    .top-brands{
+        display: none;
+    }
     .home-about{
         grid-auto-flow: row;
         grid-template-columns: 1fr;
@@ -375,6 +378,11 @@ button{
     }
     .polygon-2{
         height: 200vh;
+    }
+}
+@media (max-width: 640px){
+    .polygon-2{
+        height:230vh;
     }
 }
 </style>
