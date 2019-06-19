@@ -275,5 +275,9 @@ input[type=submit]{
     .grid-view > img{
         height: 2rem;
     }
+    .adres-wrapper > img{
+        height: 20rem;
+        width: 16rem;
+    }
 }
 </style>
