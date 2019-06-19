@@ -123,11 +123,11 @@ export default {
         },
         swipeLeft() {
         const content = this.$refs.content;
-        this.scrollTo(content, -300, 800);
+        this.scrollTo(content, -100, 800);
         },
         swipeRight() {
         const content = this.$refs.content;
-        this.scrollTo(content, 300, 800);
+        this.scrollTo(content, 100, 800);
         },
         filterByBrand(event) {
             let brandName = event.target.innerText
