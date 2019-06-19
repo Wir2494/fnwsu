@@ -12,10 +12,10 @@
     <div class="contact-box height-box-3 box-style">
         <div class="grid-view">
             <img :src="call" alt="Call Firgos Suriname">
-            <p>{{contactnummer1}}</p>
-            <p>{{contactnummer2}}</p>
-            <p>{{contactnummer3}}</p>
-            <p>{{contactnummer4}}</p>
+            <p>{{contactnummer1}}||</p>
+            <p>{{contactnummer2}}||</p>
+            <p>{{contactnummer3}}||</p>
+            <p>{{contactnummer4}}||</p>
         </div>
     </div>
     <div class="adres-container height-box-4">
