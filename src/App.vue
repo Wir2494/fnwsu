@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 #app {
   font-family: 'Roboto', sans-serif;
   margin: 0;
