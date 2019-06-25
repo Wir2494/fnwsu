@@ -32,11 +32,11 @@
     </div>
     <div class="contact-box height-box-5 box-style">
         <p>Stuur ons een bericht!</p>
-        <form action="https://formspree.io/email@domain.tld" method="POST">
-            <input type="text" placeholder="NAAM...">
-            <input type="email" placeholder="EMAIL ADRES">
-            <input type="number" placeholder="TELEFOON NUMMER">
-            <textarea name="subject" placeholder="TYP JOUW BERICHT!.."></textarea>
+        <form action="https://formspree.io/chandeni.girjasing@firgos.net" method="POST">
+            <input type="text" name="name" placeholder="NAAM...">
+            <input type="email" name="email" placeholder="EMAIL ADRES">
+            <input type="number" name="mobile-number" placeholder="TELEFOON NUMMER">
+            <textarea name="message" placeholder="TYP JOUW BERICHT!.."></textarea>
             <input type="submit" value="Verstuur">
         </form>
     </div>
